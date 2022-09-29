@@ -28,9 +28,45 @@ namespace AppTemporal.Services
                 previsao.Visibility = (string)resultado["weather"][0]["main"] + " C";
                 DateTime time = new DateTime(1970, 1, 1, 0, 0, 0, 0 );
                 DateTime sunrise = time.AddSeconds((double)resultado["sys"]["sunrise"]);
-
+                DateTime sunset = time.AddSeconds((double)resultado["sys"]["sunset"]);
+                previsao.Sunrise = String.Format("{0:d/MM/yyyy HH:mm:ss}", sunrise);
+                previsao.Sunset = String.Format("{0:d/MM/yyyy HH:mm:ss}", sunset);
+                return previsao;
 
             }
+            else
+            {
+                return null;
+            }
+        }
+
+        public static async Task<dynamic> getDataFromService(String queryString)
+        {
+            HttpClient client = new HttpClient();
+            var response = await client.GetAsync(queryString);
+            dynamic data = null;
+            if (response != null)
+            {
+                string json = response.Content.ReadAsStringAsync().Result;
+                data = JsonConvert.DeserializeObject(json);
+            }
+            return data;
+        }
+
+        public static async Task<dynamic> getDataFromServiceByCity(string city)
+        {
+            string appId = "6bc9fdf60e7df1500cab1643db19a682";
+
+            string url = string.Format("https://home.openweathermap.org/api_keys", city.Trim(), appId);
+            HttpClient client = new HttpClient();
+            var response = await client.GetAsync(url);
+            dynamic data = null;
+            if (response != null)
+            {
+                string json = response.Content.ReadAsStringAsync().Result;
+                data = JsonConvert.DeserializeObject(json);
+            }
+            return data;
         }
 
     }
