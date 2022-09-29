@@ -5,7 +5,20 @@
 
     <StackLayout>
         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Background="#545454">
-            
+            <StackLayout Padding="10,10,10,10" HorizontalOptions="Start">
+                <Label Text="Procurar Cidade" TextColor="White" FontAttributes="Bold" FontSize="Medium"/>
+                <Label x:Name="cidade_label" Text="Digite o nome da cidade" TextColor="Yellow" FontSize="Small"/>
+                <Entry x:Name="cidadeEntry"/>
+            </StackLayout>
+            <StackLayout>
+                <Button x:Name="btnPrevisao" Text="Previsão do tempo" WidthRequest="185"
+                                             BorderWidth="1" Clicked="btnPrevisao_Clicked"/>
+            </StackLayout>
+            <StackLayout Padding="10,10,10,10" HorizontalOptions="Start">
+                <Image x:Name="imgTempo" />
+
+            </StackLayout>
+
         </StackLayout>
     </StackLayout>
 

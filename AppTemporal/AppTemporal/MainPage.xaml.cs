@@ -14,5 +14,10 @@ namespace AppTemporal
         {
             InitializeComponent();
         }
+
+        private void btnPrevisao_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }
