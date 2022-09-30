@@ -16,9 +16,22 @@
             </StackLayout>
             <StackLayout Padding="10,10,10,10" HorizontalOptions="Start">
                 <Image x:Name="imgTempo" />
+                <Label Text="Local" />
+                <Label Text="{Binding Title}" TextColor="Black" />
+                <Label Text="Temperatura" />
+                <Label x:Name="tempLabel" TextColor="Black" Text="{Binding Temperature}" />
+                <Label Text="Veloc. Vento" />
+                <Label x:Name="windLabel" Text="{Binding Wind}" TextColor="Black" />
+                <Label Text="Humidade" />
+                <Label x:Name="humidityLabel" Text="{Binding Humidity}" TextColor="Black" />
+                <Label Text="Visibilidade" />
+                <Label x:Name="visibilitylabel" Text="{Binding Visibility}" TextColor="Black" />
+                <Label Text="Hora Nascimento Sol" />
+                <Label x:Name="sunriseLabel" Text="{Binding Sunrise}" TextColor="Black" />
+                <Label Text="Hora do pôr do Sol" />
+                <Label x:Name="sunsetLabel" Text="{Binding Sunset}" TextColor="Black" />
 
             </StackLayout>
-
         </StackLayout>
     </StackLayout>
 
