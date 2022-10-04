@@ -26,6 +26,9 @@ namespace AppTemporal
             {
                 if (!String.IsNullOrEmpty(cidadeEntry.Text))
                 {
+                    btnPrevisao.Text = "Carregando...";
+                    btnPrevisao.IsEnabled = false;
+
                     Tempo previsaoDoTempo = await DataService.GetPrevisaoDoTempo(cidadeEntry.Text);
                     this.BindingContext = previsaoDoTempo;
                     btnPrevisao.Text = "Nova Previsão";
@@ -34,6 +37,12 @@ namespace AppTemporal
             catch (Exception ex)
             {
                 await DisplayAlert("Erro ", ex.Message, "OK");
+            }
+            finally
+            {
+                btnPrevisao.Text = "Nova Previsão";
+                btnPrevisao.IsEnabled = true;
+                cidadeEntry.Text = " ";
             }
 
         }
